@@ -53,7 +53,7 @@ abstract class AbstractBootstrap
 
         $serviceManager = new ServiceManager(new ServiceManagerConfig());
         $serviceManager->setService('ApplicationConfig', $config);
-        $serviceManager->get('ModuleManager')->loadModules();
+        #$serviceManager->get('ModuleManager')->loadModules();
 
         static::$serviceManager = $serviceManager;
         static::$config = $config;
