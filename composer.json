@@ -1,0 +1,30 @@
+{
+    "name": "juizmill/wp",
+    "description": "Base para modulos em ZF 2",
+    "type": "library",
+    "license": "MIT",
+    "keywords": [
+        "module",
+        "zf2",
+		"son",
+        "wp"
+    ],
+    "homepage": "http://framework.zend.com",
+    "authors": [
+        {
+            "name": "juizmill",
+            "email": "jesusvieiradelima@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "zendframework/zendframework": "2.*",
+        "doctrine/doctrine-orm-module": "dev-master"
+    },
+    "autoload": {
+        "psr-0": {
+            "WPBase": "src/"
+        }
+	}
+
+}
