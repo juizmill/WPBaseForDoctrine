@@ -45,8 +45,9 @@ abstract class AbstractService
     {
         $entity = new $this->entity($data);
 
-        $this->em->persist($entity);
-        $this->em->flush();
+        $this->getEm()->persist($entity);
+        $this->getEm()->flush();
+
         return $entity;
     }
 
@@ -61,11 +62,15 @@ abstract class AbstractService
      */
     public function update(array $data)
     {
-        $entity = $this->em->getReference($this->entity, $data['id']);
+        if (! isset($data['id']))
+            throw new \InvalidArgumentException('A key ID é obrigatório dentro do array');
+
+        $entity = $this->getEm()->getReference($this->entity, $data['id']);
         (new Hydrator\ClassMethods())->hydrate($data, $entity);
 
-        $this->em->persist($entity);
-        $this->em->flush();
+        $this->getEm()->persist($entity);
+        $this->getEm()->flush();
+
         return $entity;
     }
 
@@ -80,12 +85,27 @@ abstract class AbstractService
      */
     public function delete($id)
     {
-        $entity = $this->em->getReference($this->entity, $id);
-        if ($entity) {
-            $this->em->remove($entity);
-            $this->em->flush();
-            return $id;
-        }
+        if (! is_numeric($id))
+            throw new \InvalidArgumentException('Campo ID deve ser nunérico');
+
+        $entity = $this->getEm()->getReference($this->entity, $id);
+
+        $this->getEm()->remove($entity);
+        $this->getEm()->flush();
+
+        return $id;
+    }
+
+    /**
+     * getEm
+     *
+     * Obtem conexao com o banco de dados
+     *
+     * @return EntityManager
+     */
+    public function getEm()
+    {
+        return $this->em;
     }
 
 }
