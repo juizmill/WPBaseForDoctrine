@@ -80,8 +80,8 @@ class TestCase extends \PHPUnit_Framework_TestCase
 
     public function createDatabase($module)
     {
-        if (file_exists(getcwd() . '/module/' . $module . '/db/create.sql')) {
-            $sql = file(getcwd() . '/module/' . $module . '/db/create.sql');
+        if (file_exists(getcwd() . '/module/' . $module . '/tests/db/create.sql')) {
+            $sql = file(getcwd() . '/module/' . $module . '/tests/db/create.sql');
             foreach ($sql as $s) {
                 $this->getEm()->getConnection()->exec($s);
             }
@@ -95,8 +95,8 @@ class TestCase extends \PHPUnit_Framework_TestCase
         parent::tearDown();
 
         foreach ($this->filterModules() as $m) {
-            if (file_exists(getcwd() . '/module/' . $m . '/db/drop.sql')) {
-                $sql = file(getcwd() . '/module/' . $m . '/db/drop.sql');
+            if (file_exists(getcwd() . '/module/' . $m . '/tests/db/drop.sql')) {
+                $sql = file(getcwd() . '/module/' . $m . '/tests/db/drop.sql');
                 foreach ($sql as $s) {
                     $this->getEm()->getConnection()->exec($s);
                 }
