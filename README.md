@@ -21,9 +21,9 @@ No diretório config/autoload, no arquivo global.php
         'port' => 465, #Porta do servidor de e-mail
         'connection_class' => 'login', #Diz que será feito uma autenticação para disparar os e-mail
         'connection_config' => array(
-            'from' => 'QUEMENIA@gmail.com', # DE!
-            'username' => 'AUTENTICACAO@gmail.com', #E-Mail de autenticação
-            'password' => 'SENHA', #Senha do e-mail para autenticar
+            'from' => 'teste@gmail.com', # DE!
+            'username' => 'teste@gmail.com', #E-Mail de autenticação
+            'password' => 'tete', #Senha do e-mail para autenticar
             'ssl' => 'ssl', #Tipo do envio
             )
         ),
