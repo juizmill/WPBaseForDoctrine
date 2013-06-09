@@ -12,7 +12,7 @@ Para rodar os teste execute este comando na raiz  do projeto
 Configurar o MAIL
 =================
 
-No diretório config/autoload, no arquivo glocal.php
+No diretório config/autoload, no arquivo global.php
 
     return array(
         'mail' => array(
